@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Raiz Conecta</title>
+    <meta name="description" content="Conectando mercados a produtos frescos, direto do produtor para a sua mesa.">
+    <style>
+        :root {
+            --primary: #388e3c;
+            --accent: #ff9800;
+            --bg: #f9fbe7;
+            --white: #fff;
+            --radius: 8px;
+            --shadow: 0 2px 8px rgba(0,0,0,0.07);
+            --space: 24px;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: #222;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 16px 0;
+            box-shadow: var(--shadow);
+        }
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--white);
+        }
+        nav ul {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        nav a.active, nav a:hover {
+            background: var(--accent);
+        }
+        main {
+            margin-top: var(--space);
+        }
+        section {
+            margin-bottom: var(--space);
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: var(--space);
+        }
+        h2 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .simple-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        .simple-form label {
+            font-weight: 500;
+        }
+        .simple-form input, .simple-form select {
+            padding: 8px;
+            border-radius: var(--radius);
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        .btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            padding: 10px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+        .btn--accent {
+            background: var(--accent);
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+        .card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card img {
+            width: 100%;
+            max-width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            margin-bottom: 8px;
+        }
+        .card__label {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .card__price {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .badge {
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 8px;
+            padding: 2px 8px;
+            font-size: 0.85rem;
+            margin-left: 6px;
+        }
+        .section-group {
+            display: flex;
+            gap: var(--space);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .section-group > section {
+            flex: 1 1 320px;
+            min-width: 280px;
+            margin-bottom: 0;
+        }
+        .feedback-list, .pedido-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .feedback-list li, .pedido-list li {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 8px;
+            margin-bottom: 8px;
+        }
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 18px 0;
+            margin-top: var(--space);
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        @media (max-width: 700px) {
+            .header-flex, nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .section-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <a href="#home" class="logo">
+                <img src="logo-raiz-conecta.png" alt="Raiz Conecta" width="36" height="36" style="margin-right:8px;border-radius:50%;background:#fff;">
+                Raiz Conecta
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Início</a></li>
+                    <li><a href="#login">Login</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#pedidos">Pedidos</a></li>
+                    <li><a href="#avaliacoes">Avaliações</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Hero -->
+        <section id="home">
+            <h2>Bem-vindo ao Raiz Conecta</h2>
+            <p style="text-align:center;max-width:500px;margin:0 auto;">
+                Conecte mercados e produtores rurais para acesso a produtos frescos, qualidade e economia local.
+            </p>
+        </section>
+        <!-- Login e Cadastro -->
+        <div class="section-group">
+            <section id="login">
+                <h2>Login</h2>
+                <form class="simple-form" id="login-form">
+                    <label for="login-tipo">Tipo</label>
+                    <select id="login-tipo" required>
+                        <option value="">Selecione</option>
+                        <option value="produtor">Produtor</option>
+                        <option value="mercado">Mercado</option>
+                    </select>
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" required>
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" required>
+                    <button class="btn" type="submit">Entrar</button>
+                </form>
+                <div id="login-msg" style="color:var(--primary);font-weight:600;text-align:center;margin-top:8px;"></div>
+            </section>
+            <section id="cadastro">
+                <h2>Cadastro</h2>
+                <form class="simple-form" id="cadastro-form">
+                    <label for="cadastro-tipo">Tipo</label>
+                    <select id="cadastro-tipo" required>
+                        <option value="">Selecione</option>
+                        <option value="produtor">Produtor</option>
+                        <option value="mercado">Mercado</option>
+                    </select>
+                    <label for="cadastro-nome">Nome</label>
+                    <input type="text" id="cadastro-nome" required>
+                    <label for="cadastro-email">E-mail</label>
+                    <input type="email" id="cadastro-email" required>
+                    <label for="cadastro-senha">Senha</label>
+                    <input type="password" id="cadastro-senha" required>
+                    <button class="btn btn--accent" type="submit">Cadastrar</button>
+                </form>
+                <div id="cadastro-msg" style="color:var(--primary);font-weight:600;text-align:center;margin-top:8px;"></div>
+            </section>
+        </div>
+        <!-- Cadastro de Produtos (apenas produtor) -->
+        <section id="produtos">
+            <h2>Catálogo de Produtos</h2>
+            <form class="simple-form" id="produto-form">
+                <label for="produto-nome">Nome do Produto</label>
+                <input type="text" id="produto-nome" required>
+                <label for="produto-preco">Preço (R$)</label>
+                <input type="number" id="produto-preco" min="0.01" step="0.01" required>
+                <label for="produto-qualidade">Qualidade</label>
+                <select id="produto-qualidade" required>
+                    <option value="">Selecione</option>
+                    <option value="Orgânico">Orgânico</option>
+                    <option value="Convencional">Convencional</option>
+                    <option value="Hidropônico">Hidropônico</option>
+                </select>
+                <button class="btn btn--accent" type="submit">Adicionar Produto</button>
+            </form>
+            <div id="produto-msg" style="color:var(--primary);font-weight:600;text-align:center;margin-top:8px;"></div>
+            <div class="cards" id="produtos-cards"></div>
+        </section>
+        <!-- Pedidos -->
+        <section id="pedidos">
+            <h2>Pedidos</h2>
+            <form class="simple-form" id="pedido-form">
+                <label for="pedido-produto">Produto</label>
+                <select id="pedido-produto" required></select>
+                <label for="pedido-quantidade">Quantidade</label>
+                <input type="number" id="pedido-quantidade" min="1" required>
+                <button class="btn" type="submit">Solicitar</button>
+            </form>
+            <div id="pedido-msg" style="color:var(--primary);font-weight:600;text-align:center;margin-top:8px;"></div>
+            <ul class="pedido-list" id="pedidos-list"></ul>
+        </section>
+        <!-- Avaliações -->
+        <section id="avaliacoes">
+            <h2>Avaliações</h2>
+            <form class="simple-form" id="feedback-form">
+                <label for="feedback-produto">Produto</label>
+                <select id="feedback-produto" required></select>
+                <label for="feedback-nota">Nota</label>
+                <select id="feedback-nota" required>
+                    <option value="">Selecione</option>
+                    <option value="5">5 - Excelente</option>
+                    <option value="4">4 - Muito Bom</option>
+                    <option value="3">3 - Bom</option>
+                    <option value="2">2 - Regular</option>
+                    <option value="1">1 - Ruim</option>
+                </select>
+                <label for="feedback-texto">Comentário</label>
+                <input id="feedback-texto" required>
+                <button class="btn btn--accent" type="submit">Enviar Avaliação</button>
+            </form>
+            <div id="feedback-msg" style="color:var(--primary);font-weight:600;text-align:center;margin-top:8px;"></div>
+            <ul class="feedback-list" id="feedback-list"></ul>
+        </section>
+    </main>
+    <footer>
+        <div>
+            Raiz Conecta &copy;2025 &mdash; Projeto acadêmico Fatec
+        </div>
+    </footer>
+    <script>
+    // Navegação ativa
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function() {
+            document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // --- Login e Cadastro (simples, sem backend) ---
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('login-msg').textContent = 'Login simulado!';
+        setTimeout(()=>document.getElementById('login-msg').textContent='',2000);
+        this.reset();
+    });
+    document.getElementById('cadastro-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('cadastro-msg').textContent = 'Cadastro simulado!';
+        setTimeout(()=>document.getElementById('cadastro-msg').textContent='',2000);
+        this.reset();
+    });
+
+    // --- Produtos ---
+    let produtos = JSON.parse(localStorage.getItem('produtos')) || [
+        {nome: 'Cenoura Fresca', preco: 3.00, qualidade: 'Convencional', img: 'cenoura.jpg'},
+        {nome: 'Alface Hidropônica', preco: 4.00, qualidade: 'Hidropônico', img: 'alface.jpg'},
+        {nome: 'Tomate Orgânico', preco: 5.00, qualidade: 'Orgânico', img: 'tomate.jpg'}
+    ];
+    function salvarProdutos() {
+        localStorage.setItem('produtos', JSON.stringify(produtos));
+    }
+    function renderProdutos() {
+        const cards = document.getElementById('produtos-cards');
+        cards.innerHTML = '';
+        produtos.forEach((p, idx) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${p.img || 'cenoura.jpg'}" alt="${p.nome}">
+                <div class="card__label">${p.nome} <span class="badge">${p.qualidade}</span></div>
+                <div class="card__price">R$${p.preco.toFixed(2)}</div>
+            `;
+            cards.appendChild(card);
+        });
+        atualizarSelectsProdutos();
+    }
+    renderProdutos();
+    document.getElementById('produto-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nome = document.getElementById('produto-nome').value.trim();
+        const preco = parseFloat(document.getElementById('produto-preco').value);
+        const qualidade = document.getElementById('produto-qualidade').value;
+        if (!nome || !preco || !qualidade) return;
+        produtos.push({nome, preco, qualidade, img: 'cenoura.jpg'});
+        salvarProdutos();
+        renderProdutos();
+        document.getElementById('produto-msg').textContent = 'Produto adicionado!';
+        this.reset();
+        setTimeout(()=>document.getElementById('produto-msg').textContent='',1500);
+    });
+
+    // --- Pedidos ---
+    let pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+    function salvarPedidos() {
+        localStorage.setItem('pedidos', JSON.stringify(pedidos));
+    }
+    function renderPedidos() {
+        const ul = document.getElementById('pedidos-list');
+        ul.innerHTML = '';
+        pedidos.forEach(p => {
+            const li = document.createElement('li');
+            li.textContent = `Produto: ${p.produto} | Quantidade: ${p.quantidade}`;
+            ul.appendChild(li);
+        });
+    }
+    renderPedidos();
+    document.getElementById('pedido-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const idx = parseInt(document.getElementById('pedido-produto').value);
+        const quantidade = parseInt(document.getElementById('pedido-quantidade').value);
+        if (isNaN(idx) || isNaN(quantidade) || quantidade < 1) return;
+        pedidos.push({produto: produtos[idx].nome, quantidade});
+        salvarPedidos();
+        renderPedidos();
+        document.getElementById('pedido-msg').textContent = 'Pedido realizado!';
+        this.reset();
+        setTimeout(()=>document.getElementById('pedido-msg').textContent='',1500);
+    });
+
+    // --- Avaliações ---
+    let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+    function salvarFeedbacks() {
+        localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+    }
+    function renderFeedbacks() {
+        const ul = document.getElementById('feedback-list');
+        ul.innerHTML = '';
+        feedbacks.slice(-5).reverse().forEach(fb => {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${fb.produto}</strong> - ${'★'.repeat(fb.nota)}<br>${fb.texto}`;
+            ul.appendChild(li);
+        });
+    }
+    renderFeedbacks();
+    document.getElementById('feedback-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const idx = parseInt(document.getElementById('feedback-produto').value);
+        const nota = parseInt(document.getElementById('feedback-nota').value);
+        const texto = document.getElementById('feedback-texto').value.trim();
+        if (isNaN(idx) || isNaN(nota) || !texto) return;
+        feedbacks.push({produto: produtos[idx].nome, nota, texto});
+        salvarFeedbacks();
+        renderFeedbacks();
+        document.getElementById('feedback-msg').textContent = 'Avaliação enviada!';
+        this.reset();
+        setTimeout(()=>document.getElementById('feedback-msg').textContent='',1500);
+    });
+
+    // Atualiza selects de produtos para pedidos e feedback
+    function atualizarSelectsProdutos() {
+        const pedidoSelect = document.getElementById('pedido-produto');
+        const feedbackSelect = document.getElementById('feedback-produto');
+        pedidoSelect.innerHTML = '';
+        feedbackSelect.innerHTML = '';
+        produtos.forEach((p, idx) => {
+            const opt1 = document.createElement('option');
+            opt1.value = idx;
+            opt1.textContent = p.nome;
+            pedidoSelect.appendChild(opt1);
+            const opt2 = document.createElement('option');
+            opt2.value = idx;
+            opt2.textContent = p.nome;
+            feedbackSelect.appendChild(opt2);
+        });
+    }
+    atualizarSelectsProdutos();
+
+    // Atualiza catálogo ao carregar
+    window.addEventListener('storage', () => {
+        produtos = JSON.parse(localStorage.getItem('produtos')) || produtos;
+        pedidos = JSON.parse(localStorage.getItem('pedidos')) || pedidos;
+        feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || feedbacks;
+        renderProdutos();
+        renderPedidos();
+        renderFeedbacks();
+    });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Raiz Conecta - Login & Cadastro</title>
+    <!-- Fonte Montserrat do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #388e3c;
+            --accent: #ff9800;
+            --bg: #f9fbe7;
+            --white: #fff;
+            --radius: 18px;
+            --shadow: 0 8px 32px rgba(56,142,60,0.13), 0 2px 8px rgba(56,142,60,0.09);
+        }
+        /* Fundo fixo e estático, não se move nem amplia ao focar campos */
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            /* Gradiente + imagem de fundo fixa */
+            background: linear-gradient(120deg, #f9fbe7 60%, #c8e6c9 100%);
+            background-image: url("assets/fundo.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* <-- Mantém o fundo fixo */
+            color: #222;
+        }
+        /* Overlay escurecendo o fundo */
+        body::before {
+            z-index: 0;
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.486); 
+            pointer-events: none;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 2;}
+        /* Cabeçalho com link para tela principal */
+        header, footer {
+            background: var(--primary); color: var(--white); text-align: center;
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: 28px 0 20px 0;
+            box-shadow: var(--shadow);
+            position: relative; z-index: 2;
+        }
+        /* Links no header e footer */
+        header a, footer a {
+            color: var(--white);
+            text-decoration: underline;
+            font-weight: 700;
+            transition: color .2s;
+        }
+        header a:hover, footer a:hover {
+            color: var(--accent);
+        }
+        main {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            min-height: 70vh;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1300px;
+            margin: 48px auto 48px auto;
+        }
+        .main-left {
+            flex: 0 1 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin-left: 7vw;
+            z-index: 2;
+            margin-top: 32px;
+            margin-bottom: 32px;
+        }
+        .auth-card {
+            background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+            padding: 36px 28px; max-width: 480px; width: 100%; margin: 0 16px;
+            animation: fadeInUp 0.7s cubic-bezier(.23,1.02,.67,.98);
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .main-right {
+            flex: 1 1 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+            margin-top: 32px;
+            margin-bottom: 32px;
+        }
+        .logo-bg {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+            padding-top: 60px;
+            padding-right: 8vw;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-img {
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            background: none;
+            box-shadow: 0 8px 32px rgba(56,142,60,0.10);
+            border-radius: 50%;
+        }
+        .tabs { display: flex; justify-content: center; margin-bottom: 24px; gap: 8px; }
+        .tab-btn {
+            background: none; border: none; font-size: 1.1rem; font-weight: 700; color: var(--primary);
+            padding: 10px 28px; border-radius: 30px 30px 0 0; cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+        .tab-btn.active { background: var(--accent); color: var(--white); }
+        h2 { color: var(--primary); text-align: center; font-size: 2rem; margin: 0 0 18px 0; }
+        .simple-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: center;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0;}
+            to { opacity: 1;}
+        }
+        .simple-form label {
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: #444;
+            align-self: flex-start;
+        }
+        .simple-form input, .simple-form select {
+            padding: 11px;
+            border-radius: var(--radius);
+            border: 1.5px solid #c8e6c9;
+            background: #f5f5f5;
+            font-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border .2s;
+        }
+        .simple-form input:focus, .simple-form select:focus {
+            border: 1.5px solid var(--primary);
+            outline: none;
+        }
+        .form-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            animation: fadeIn 0.5s;
+        }
+        .form-row {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .btn {
+            background: linear-gradient(90deg, var(--primary) 80%, var(--accent) 100%);
+            color: var(--white); border: none; border-radius: var(--radius);
+            padding: 14px 0; font-size: 1.1rem; font-weight: 800; cursor: pointer; margin-top: 8px;
+            width: 100%;
+            transition: background .2s, transform .1s;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, var(--accent) 80%, var(--primary) 100%);
+            transform: scale(1.03);
+        }
+        .msg { text-align: center; margin-top: 10px; font-weight: 700; font-size: 1rem; min-height: 24px; }
+        .msg.success { color: var(--primary); }
+        .msg.error { color: #d32f2f; }
+        .switch-btn {
+            display: block; margin: 16px auto 0 auto; background: var(--accent); color: var(--white);
+            border: none; border-radius: 22px; padding: 8px 28px; font-size: 1rem; font-weight: 600; cursor: pointer;
+            transition: background .2s, transform .1s;
+        }
+        .switch-btn:hover {
+            background: var(--primary);
+            transform: scale(1.04);
+        }
+        #login-section, #cadastro-section {
+            transition: opacity .4s, transform .4s;
+        }
+        #login-section[hidden], #cadastro-section[hidden] {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            transform: scale(0.98) translateY(20px);
+        }
+        #login-section, #cadastro-section {
+            opacity: 1;
+            position: static;
+            transform: none;
+        }
+        @media (max-width: 1200px) {
+            .logo-bg {
+                padding-right: 2vw;
+            }
+            .logo-img {
+                width: 160px;
+                height: 160px;
+            }
+            main {
+                margin-top: 36px;
+                margin-bottom: 36px;
+            }
+            .main-left, .main-right {
+                margin-top: 24px;
+                margin-bottom: 24px;
+            }
+        }
+        @media (max-width: 900px) {
+            .main-left {
+                margin-left: 0;
+                align-items: center;
+                width: 100vw;
+                margin-top: 24px;
+                margin-bottom: 24px;
+            }
+            .auth-card {
+                max-width: 98vw;
+                padding: 24px 4vw;
+            }
+            .main-right {
+                justify-content: center;
+                padding-right: 0;
+                margin-top: 24px;
+                margin-bottom: 24px;
+            }
+            .logo-bg {
+                padding-right: 0;
+                justify-content: center;
+                padding-top: 32px;
+            }
+        }
+        @media (max-width: 700px) {
+            main { flex-direction: column; align-items: center; margin-top: 18px; margin-bottom: 18px;}
+            .main-left { width: 100%; min-height: unset; margin-top: 12px; margin-bottom: 12px;}
+            .auth-card { max-width: 98vw; padding: 24px 4vw; }
+            .form-row { flex-direction: column; gap: 0; }
+            .main-right {
+                width: 100%;
+                min-height: unset;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 24px;
+                margin-top: 12px;
+            }
+            .logo-bg {
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                padding-top: 18px;
+                padding-right: 0;
+            }
+            .logo-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho do site -->
+    <header>
+        <div class="container">
+            <!-- Link para voltar à tela principal -->
+            <a href="index.html">Raiz Conecta</a>
+        </div>
+    </header>
+    <main>
+        <!-- Área do formulário de login/cadastro, alinhada à esquerda -->
+        <div class="main-left">
+            <div class="auth-card" id="auth-card">
+                <!-- Abas para alternar entre Login e Cadastro -->
+                <div class="tabs">
+                    <button class="tab-btn active" id="tab-login" type="button">Entrar</button>
+                    <button class="tab-btn" id="tab-cadastro" type="button">Cadastrar</button>
+                </div>
+                <!-- Seção de Login -->
+                <div id="login-section">
+                    <h2>Login</h2>
+                    <form class="simple-form" id="login-form" autocomplete="on">
+                        <div class="form-group">
+                            <label for="login-email">E-mail</label>
+                            <input type="email" id="login-email" required autocomplete="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-senha">Senha</label>
+                            <input type="password" id="login-senha" required autocomplete="current-password">
+                        </div>
+                        <button class="btn" type="submit">Entrar</button>
+                    </form>
+                    <div class="msg" id="login-msg"></div>
+                    <!-- Botão para alternar para cadastro -->
+                    <button class="switch-btn" id="switch-to-cadastro" type="button">Não tem conta? Cadastre-se</button>
+                </div>
+                <!-- Seção de Cadastro -->
+                <div id="cadastro-section" hidden>
+                    <h2>Cadastro</h2>
+                    <form class="simple-form" id="cadastro-form" autocomplete="on">
+                        <!-- Seleção do tipo de conta -->
+                        <div class="form-group">
+                            <label for="cadastro-tipo">Tipo de Conta</label>
+                            <select id="cadastro-tipo" required>
+                                <option value="">Selecione</option>
+                                <option value="produtor">Produtor</option>
+                                <option value="mercado">Mercado</option>
+                            </select>
+                        </div>
+                        <!-- Campos específicos para Produtor -->
+                        <div id="cadastro-produtor-fields" style="display:none;">
+                            <div class="form-group">
+                                <label for="cadastro-nome-produtor">Nome Completo</label>
+                                <input type="text" id="cadastro-nome-produtor" autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="cadastro-cpf">CPF</label>
+                                <input type="text" id="cadastro-cpf" maxlength="14" placeholder="000.000.000-00">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cadastro-cep-produtor">CEP</label>
+                                    <input type="text" id="cadastro-cep-produtor" maxlength="9" placeholder="00000-000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastro-pais-produtor">País</label>
+                                    <input type="text" id="cadastro-pais-produtor" placeholder="Brasil">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cadastro-estado-produtor">Estado</label>
+                                    <input type="text" id="cadastro-estado-produtor" maxlength="2" placeholder="UF">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastro-cidade-produtor">Cidade</label>
+                                    <input type="text" id="cadastro-cidade-produtor" placeholder="Cidade">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cadastro-bairro-produtor">Bairro</label>
+                                    <input type="text" id="cadastro-bairro-produtor" placeholder="Bairro">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastro-rua-produtor">Rua</label>
+                                    <input type="text" id="cadastro-rua-produtor" placeholder="Rua">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cadastro-numero-produtor">Número</label>
+                                <input type="text" id="cadastro-numero-produtor" placeholder="Número">
+                            </div>
+                        </div>
+                        <!-- Campos específicos para Mercado -->
+                        <div id="cadastro-mercado-fields" style="display:none;">
+                            <div class="form-group">
+                                <label for="cadastro-nome-mercado">Nome do Mercado</label>
+                                <input type="text" id="cadastro-nome-mercado" autocomplete="organization">
+                            </div>
+                            <div class="form-group">
+                                <label for="cadastro-cnpj">CNPJ</label>
+                                <input type="text" id="cadastro-cnpj" maxlength="18" placeholder="00.000.000/0000-00">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cadastro-cep-mercado">CEP</label>
+                                    <input type="text" id="cadastro-cep-mercado" maxlength="9" placeholder="00000-000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastro-pais-mercado">País</label>
+                                    <input type="text" id="cadastro-pais-mercado" placeholder="Brasil">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cadastro-estado-mercado">Estado</label>
+                                    <input type="text" id="cadastro-estado-mercado" maxlength="2" placeholder="UF">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastro-cidade-mercado">Cidade</label>
+                                    <input type="text" id="cadastro-cidade-mercado" placeholder="Cidade">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cadastro-bairro-mercado">Bairro</label>
+                                    <input type="text" id="cadastro-bairro-mercado" placeholder="Bairro">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cadastro-rua-mercado">Rua</label>
+                                    <input type="text" id="cadastro-rua-mercado" placeholder="Rua">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cadastro-numero-mercado">Número</label>
+                                <input type="text" id="cadastro-numero-mercado" placeholder="Número">
+                            </div>
+                        </div>
+                        <!-- Campos comuns: e-mail e senha -->
+                        <div class="form-group">
+                            <label for="cadastro-email">E-mail</label>
+                            <input type="email" id="cadastro-email" required autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="cadastro-senha">Senha</label>
+                            <input type="password" id="cadastro-senha" required autocomplete="new-password">
+                        </div>
+                        <div class="form-group">
+                            <label for="cadastro-confirmar-senha">Confirmar Senha</label>
+                            <input type="password" id="cadastro-confirmar-senha" required autocomplete="new-password">
+                        </div>
+                        <button class="btn" type="submit">Cadastrar</button>
+                    </form>
+                    <div class="msg" id="cadastro-msg"></div>
+                    <!-- Botão para alternar para login -->
+                    <button class="switch-btn" id="switch-to-login" type="button">Já tem conta? Entrar</button>
+                </div>
+            </div>
+        </div>
+        <!-- Logo grande à direita -->
+        <div class="main-right">
+            <div class="logo-bg">
+                <!-- Imagem da logo -->
+                <img src="assets/6102234.png" alt="Logo Raiz Conecta" class="logo-img">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- Exemplo de link no rodapé (opcional) -->
+        Raiz Conecta ©2025 — Projeto acadêmico Fatec
+    </footer>
+    <script>
+    // --- Alternância entre abas Login/Cadastro ---
+    // Seleciona elementos das abas e seções
+    const tabLogin = document.getElementById('tab-login');
+    const tabCadastro = document.getElementById('tab-cadastro');
+    const loginSection = document.getElementById('login-section');
+    const cadastroSection = document.getElementById('cadastro-section');
+    const switchToCadastro = document.getElementById('switch-to-cadastro');
+    const switchToLogin = document.getElementById('switch-to-login');
+
+    // Função para mostrar a aba de login
+    function showLogin() {
+        tabLogin.classList.add('active');
+        tabCadastro.classList.remove('active');
+        loginSection.hidden = false;
+        cadastroSection.hidden = true;
+        document.getElementById('login-msg').textContent = '';
+        document.getElementById('cadastro-msg').textContent = '';
+    }
+    // Função para mostrar a aba de cadastro
+    function showCadastro() {
+        tabCadastro.classList.add('active');
+        tabLogin.classList.remove('active');
+        loginSection.hidden = true;
+        cadastroSection.hidden = false;
+        document.getElementById('login-msg').textContent = '';
+        document.getElementById('cadastro-msg').textContent = '';
+    }
+    // Eventos de clique para alternar abas
+    tabLogin.onclick = showLogin;
+    tabCadastro.onclick = showCadastro;
+    switchToCadastro.onclick = showCadastro;
+    switchToLogin.onclick = showLogin;
+
+    // --- Alternância dos campos de cadastro conforme tipo de conta ---
+    // Seleciona elementos dos campos de tipo de conta
+    const cadastroTipo = document.getElementById('cadastro-tipo');
+    const produtorFields = document.getElementById('cadastro-produtor-fields');
+    const mercadoFields = document.getElementById('cadastro-mercado-fields');
+    // Evento para mostrar campos conforme seleção
+    cadastroTipo.addEventListener('change', function() {
+        produtorFields.style.display = this.value === 'produtor' ? '' : 'none';
+        mercadoFields.style.display = this.value === 'mercado' ? '' : 'none';
+        document.getElementById('cadastro-nome-produtor').required = this.value === 'produtor';
+        document.getElementById('cadastro-cpf').required = this.value === 'produtor';
+        document.getElementById('cadastro-cep-produtor').required = this.value === 'produtor';
+        document.getElementById('cadastro-pais-produtor').required = this.value === 'produtor';
+        document.getElementById('cadastro-estado-produtor').required = this.value === 'produtor';
+        document.getElementById('cadastro-cidade-produtor').required = this.value === 'produtor';
+        document.getElementById('cadastro-bairro-produtor').required = this.value === 'produtor';
+        document.getElementById('cadastro-rua-produtor').required = this.value === 'produtor';
+        document.getElementById('cadastro-numero-produtor').required = this.value === 'produtor';
+        document.getElementById('cadastro-nome-mercado').required = this.value === 'mercado';
+        document.getElementById('cadastro-cnpj').required = this.value === 'mercado';
+        document.getElementById('cadastro-cep-mercado').required = this.value === 'mercado';
+        document.getElementById('cadastro-pais-mercado').required = this.value === 'mercado';
+        document.getElementById('cadastro-estado-mercado').required = this.value === 'mercado';
+        document.getElementById('cadastro-cidade-mercado').required = this.value === 'mercado';
+        document.getElementById('cadastro-bairro-mercado').required = this.value === 'mercado';
+        document.getElementById('cadastro-rua-mercado').required = this.value === 'mercado';
+        document.getElementById('cadastro-numero-mercado').required = this.value === 'mercado';
+    });
+
+    // --- Login simulado (substitua pela integração real) ---
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const senha = document.getElementById('login-senha').value;
+        const msg = document.getElementById('login-msg');
+        if (!email || !senha) {
+            msg.textContent = 'Preencha todos os campos.';
+            msg.className = 'msg error';
+            return;
+        }
+        msg.textContent = 'Login simulado! Redirecionando...';
+        msg.className = 'msg success';
+        setTimeout(()=>{
+            msg.textContent='';
+            window.location.href = 'painel-produtor.html';
+        }, 1200);
+        this.reset();
+    });
+
+    // --- Cadastro simulado (substitua pela integração real) ---
+    document.getElementById('cadastro-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const tipo = cadastroTipo.value;
+        const email = document.getElementById('cadastro-email').value;
+        const senha = document.getElementById('cadastro-senha').value;
+        const confirmarSenha = document.getElementById('cadastro-confirmar-senha').value;
+        let valid = !!(tipo && email && senha && confirmarSenha);
+
+        if (tipo === 'produtor') {
+            [
+                'cadastro-nome-produtor','cadastro-cpf','cadastro-cep-produtor','cadastro-pais-produtor',
+                'cadastro-estado-produtor','cadastro-cidade-produtor','cadastro-bairro-produtor',
+                'cadastro-rua-produtor','cadastro-numero-produtor'
+            ].forEach(id=>{
+                if(!document.getElementById(id).value) valid = false;
+            });
+        }
+        if (tipo === 'mercado') {
+            [
+                'cadastro-nome-mercado','cadastro-cnpj','cadastro-cep-mercado','cadastro-pais-mercado',
+                'cadastro-estado-mercado','cadastro-cidade-mercado','cadastro-bairro-mercado',
+                'cadastro-rua-mercado','cadastro-numero-mercado'
+            ].forEach(id=>{
+                if(!document.getElementById(id).value) valid = false;
+            });
+        }
+        const msgDiv = document.getElementById('cadastro-msg');
+        if (!valid) {
+            msgDiv.textContent = 'Preencha todos os campos obrigatórios.';
+            msgDiv.className = 'msg error';
+            return;
+        }
+        if (senha !== confirmarSenha) {
+            msgDiv.textContent = 'As senhas não coincidem.';
+            msgDiv.className = 'msg error';
+            return;
+        }
+        msgDiv.textContent = 'Cadastro simulado! Redirecionando...';
+        msgDiv.className = 'msg success';
+        setTimeout(()=>{
+            msgDiv.textContent='';
+            window.location.href = tipo === 'mercado' ? 'painel-mercado.html' : 'painel-produtor.html';
+        }, 1200);
+        this.reset();
+        produtorFields.style.display = 'none';
+        mercadoFields.style.display = 'none';
+        cadastroTipo.value = '';
+    });
+
+    // --- Máscaras de CPF, CNPJ e CEP ---
+    function maskCpf(v) {
+        v = v.replace(/\D/g,'').slice(0,11);
+        v = v.replace(/(\d{3})(\d)/,'$1.$2');
+        v = v.replace(/(\d{3})(\d)/,'$1.$2');
+        v = v.replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+        return v;
+    }
+    function maskCnpj(v) {
+        v = v.replace(/\D/g,'').slice(0,14);
+        v = v.replace(/^(\d{2})(\d)/,'$1.$2');
+        v = v.replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3');
+        v = v.replace(/\.(\d{3})(\d)/,'.$1/$2');
+        v = v.replace(/(\d{4})(\d)/,'$1-$2');
+        return v;
+    }
+    function maskCep(v) {
+        v = v.replace(/\D/g,'').slice(0,8);
+        if(v.length > 5) v = v.replace(/^(\d{5})(\d{1,3})$/,'$1-$2');
+        return v;
+    }
+    document.getElementById('cadastro-cpf').addEventListener('input', function() {
+        this.value = maskCpf(this.value);
+    });
+    document.getElementById('cadastro-cnpj').addEventListener('input', function() {
+        this.value = maskCnpj(this.value);
+    });
+    document.getElementById('cadastro-cep-produtor').addEventListener('input', function() {
+        this.value = maskCep(this.value);
+    });
+    document.getElementById('cadastro-cep-mercado').addEventListener('input', function() {
+        this.value = maskCep(this.value);
+    });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --primary: #388e3c;
+    --accent: #ff9800;
+    --bg: #f9fbe7;
+    --white: #fff;
+    --radius: 18px;
+    --shadow: 0 8px 32px rgba(56,142,60,0.13), 0 2px 8px rgba(56,142,60,0.09);
+}
+/* Fundo fixo e estático, não se move nem amplia ao focar campos */
+html, body {
+    height: 100%;
+}
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #f9fbe7 60%, #c8e6c9 100%);
+    background-image: url("assets/fundo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #222;
+}
+/* Overlay escurecendo o fundo */
+body::before {
+    z-index: 0;
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.486); 
+    pointer-events: none;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 2;}
+header, footer {
+    background: var(--primary); color: var(--white); text-align: center;
+    border-radius: 0 0 var(--radius) var(--radius);
+    padding: 28px 0 20px 0;
+    box-shadow: var(--shadow);
+    position: relative; z-index: 2;
+}
+header a, footer a {
+    color: var(--white);
+    text-decoration: underline;
+    font-weight: 700;
+    transition: color .2s;
+}
+header a:hover, footer a:hover {
+    color: var(--accent);
+}
+main {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 70vh;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1300px;
+    margin: 48px auto 48px auto;
+}
+.main-left {
+    flex: 0 1 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin-left: 7vw;
+    z-index: 2;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+.auth-card {
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 36px 28px; max-width: 480px; width: 100%; margin: 0 16px;
+    animation: fadeInUp 0.7s cubic-bezier(.23,1.02,.67,.98);
+    position: relative;
+    z-index: 2;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+.main-right {
+    flex: 1 1 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+.logo-bg {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+    padding-right: 8vw;
+    position: relative;
+    z-index: 1;
+}
+.logo-img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    background: none;
+    box-shadow: 0 8px 32px rgba(56,142,60,0.10);
+    border-radius: 50%;
+}
+.tabs { display: flex; justify-content: center; margin-bottom: 24px; gap: 8px; }
+.tab-btn {
+    background: none; border: none; font-size: 1.1rem; font-weight: 700; color: var(--primary);
+    padding: 10px 28px; border-radius: 30px 30px 0 0; cursor: pointer;
+    transition: background .2s, color .2s;
+}
+.tab-btn.active { background: var(--accent); color: var(--white); }
+h2 { color: var(--primary); text-align: center; font-size: 2rem; margin: 0 0 18px 0; }
+.simple-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+    from { opacity: 0;}
+    to { opacity: 1;}
+}
+.simple-form label {
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #444;
+    align-self: flex-start;
+}
+.simple-form input, .simple-form select {
+    padding: 11px;
+    border-radius: var(--radius);
+    border: 1.5px solid #c8e6c9;
+    background: #f5f5f5;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border .2s;
+}
+.simple-form input:focus, .simple-form select:focus {
+    border: 1.5px solid var(--primary);
+    outline: none;
+}
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: fadeIn 0.5s;
+}
+.form-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+.form-row .form-group {
+    flex: 1;
+}
+.btn {
+    background: linear-gradient(90deg, var(--primary) 80%, var(--accent) 100%);
+    color: var(--white); border: none; border-radius: var(--radius);
+    padding: 14px 0; font-size: 1.1rem; font-weight: 800; cursor: pointer; margin-top: 8px;
+    width: 100%;
+    transition: background .2s, transform .1s;
+}
+.btn:hover {
+    background: linear-gradient(90deg, var(--accent) 80%, var(--primary) 100%);
+    transform: scale(1.03);
+}
+.msg { text-align: center; margin-top: 10px; font-weight: 700; font-size: 1rem; min-height: 24px; }
+.msg.success { color: var(--primary); }
+.msg.error { color: #d32f2f; }
+.switch-btn {
+    display: block; margin: 16px auto 0 auto; background: var(--accent); color: var(--white);
+    border: none; border-radius: 22px; padding: 8px 28px; font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: background .2s, transform .1s;
+}
+.switch-btn:hover {
+    background: var(--primary);
+    transform: scale(1.04);
+}
+#login-section, #cadastro-section {
+    transition: opacity .4s, transform .4s;
+}
+#login-section[hidden], #cadastro-section[hidden] {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transform: scale(0.98) translateY(20px);
+}
+#login-section, #cadastro-section {
+    opacity: 1;
+    position: static;
+    transform: none;
+}
+@media (max-width: 1200px) {
+    .logo-bg {
+        padding-right: 2vw;
+    }
+    .logo-img {
+        width: 160px;
+        height: 160px;
+    }
+    main {
+        margin-top: 36px;
+        margin-bottom: 36px;
+    }
+    .main-left, .main-right {
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+}
+@media (max-width: 900px) {
+    .main-left {
+        margin-left: 0;
+        align-items: center;
+        width: 100vw;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    .auth-card {
+        max-width: 98vw;
+        padding: 24px 4vw;
+    }
+    .main-right {
+        justify-content: center;
+        padding-right: 0;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    .logo-bg {
+        padding-right: 0;
+        justify-content: center;
+        padding-top: 32px;
+    }
+}
+@media (max-width: 700px) {
+    main { flex-direction: column; align-items: center; margin-top: 18px; margin-bottom: 18px;}
+    .main-left { width: 100%; min-height: unset; margin-top: 12px; margin-bottom: 12px;}
+    .auth-card { max-width: 98vw; padding: 24px 4vw; }
+    .form-row { flex-direction: column; gap: 0; }
+    .main-right {
+        width: 100%;
+        min-height: unset;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 24px;
+        margin-top: 12px;
+    }
+    .logo-bg {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding-top: 18px;
+        padding-right: 0;
+    }
+    .logo-img {
+        width: 120px;
+        height: 120px;
+    }
+}
