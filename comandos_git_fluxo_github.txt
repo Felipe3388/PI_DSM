@@ -1,0 +1,49 @@
+
+COMANDOS BÁSICOS DO GIT (FLUXO COM REPOSITÓRIO JÁ EXISTENTE NO GITHUB)
+======================================================================
+
+1. CLONAR O REPOSITÓRIO REMOTO PARA SUA MÁQUINA
+-----------------------------------------------
+git clone <URL>                  -> Baixa todos os arquivos e histórico do repositório
+
+2. VERIFICAR O STATUS DOS ARQUIVOS
+----------------------------------
+git status                       -> Mostra alterações feitas, arquivos novos ou prontos para commit
+
+3. ADICIONAR ALTERAÇÕES AO STAGING
+----------------------------------
+git add arquivo.txt              -> Adiciona um arquivo específico
+git add .                        -> Adiciona todos os arquivos modificados/novos
+
+4. SALVAR ALTERAÇÕES (COMMIT)
+------------------------------
+git commit -m "Mensagem clara e objetiva" -> Salva as alterações no histórico local
+
+5. ENVIAR ALTERAÇÕES PARA O GITHUB
+-----------------------------------
+git push origin main             -> Envia as alterações para a branch main do repositório remoto
+
+6. ATUALIZAR O REPOSITÓRIO LOCAL COM O REMOTO
+---------------------------------------------
+git pull origin main             -> Baixa e aplica as alterações mais recentes do remoto
+
+7. CRIAR E TROCAR DE BRANCH (SE NECESSÁRIO)
+-------------------------------------------
+git branch nova-branch           -> Cria nova branch
+git checkout nova-branch         -> Muda para nova branch
+git checkout -b nova-branch      -> Cria e já muda para nova branch
+
+8. MESCLAR UMA BRANCH NA MAIN
+-----------------------------
+git checkout main                -> Vai para a branch principal
+git merge outra-branch           -> Mescla alterações de outra branch
+
+9. DESCARTAR ALTERAÇÕES (OPCIONAL)
+----------------------------------
+git checkout -- arquivo.txt      -> Desfaz alterações não salvas em um arquivo
+git reset arquivo.txt            -> Remove arquivo do staging
+git reset --hard <hash>          -> Volta para um commit específico (cuidado!)
+
+10. VER O HISTÓRICO DE COMMITS
+------------------------------
+git log                          -> Lista commits com autor, data e mensagem
