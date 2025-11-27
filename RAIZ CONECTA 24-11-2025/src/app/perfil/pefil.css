@@ -1,0 +1,10 @@
+#perfil-tabs .nav-link.active {
+    color: var(--color-primary) !important;
+    font-weight: 600;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+#perfil-tabs .nav-link {
+    font-weight: 500;
+    color: #4b4b4b;
+}

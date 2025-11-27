@@ -1,0 +1,165 @@
+/* Container geral */
+.produtos-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f0fdf4; /* bg-green-50 */
+}
+
+/* Área principal */
+.produtos-main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Cabeçalho */
+.produtos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.produtos-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #065f46; /* text-green-800 */
+}
+
+/* Grade de produtos */
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+/* Card de produto */
+.produto-card {
+  border: 1px solid #bbf7d0; /* border-green-200 */
+  background: #fff;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+.produto-card.ativo {
+  background: #bbf7d0; /* bg-green-200 */
+  border-color: #065f46; /* border-green-700 */
+}
+.produto-card img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin: 0 auto 0.25rem;
+}
+.produto-nome {
+  font-weight: 600;
+}
+.produto-tipo {
+  color: #4b5563;
+  font-size: 0.7rem;
+}
+.produto-preco {
+  color: #047857;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+.produto-controle {
+  margin-top: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+.produto-controle button {
+  padding: 0 0.25rem;
+  background: #e5e7eb;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+.produto-controle span {
+  width: 1.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+/* Barra inferior do carrinho */
+.carrinho-barra {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 0.375rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  font-size: 0.875rem;
+}
+.carrinho-barra span {
+  font-weight: 600;
+}
+.carrinho-barra button {
+  background: #f97316; /* bg-orange-500 */
+  color: white;
+  font-weight: 700;
+  border-radius: 0.375rem;
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  transition: background 0.2s;
+}
+.carrinho-barra button:hover {
+  background: #ca8a04; /* hover:bg-yellow-600 */
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4);
+  z-index: 50;
+}
+.modal-content {
+  background: white;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  width: 20rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.modal-content h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #047857;
+}
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+.modal-botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.modal-botoes button {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.modal-botoes button:first-child {
+  background: #e5e7eb;
+}
+.modal-botoes button:last-child {
+  background: #047857;
+  color: white;
+}

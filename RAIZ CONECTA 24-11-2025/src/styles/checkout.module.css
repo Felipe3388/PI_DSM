@@ -1,0 +1,147 @@
+.checkoutContainer {
+  margin-top: 40px;
+  margin-bottom: 80px;
+  padding-left: 15px; /* Adiciona padding para evitar que o conteúdo encoste nas bordas */
+  padding-right: 15px;
+}
+
+.title {
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-foreground, #1e293b); /* Usa variável global */
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+}
+
+/* Removido sectionWrapper pois usaremos Row/Col do Bootstrap */
+
+.card {
+  border: 1px solid var(--color-border, #e2e8f0); /* Usa variável global */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+  border-radius: var(--radius, 0.5rem); /* Usa variável global */
+  background: var(--color-card, #fff); /* Usa variável global */
+  height: 100%; /* Garante altura total para alinhar cards */
+}
+
+.cardHeader {
+  background-color: var(--color-primary, #16a34a); /* Usa variável global */
+  color: var(--color-primary-foreground, #fff); /* Usa variável global */
+  font-weight: 600;
+  text-align: center;
+  border-bottom: none; /* Remove borda inferior padrão */
+  /* Mantém cantos arredondados apenas no topo */
+  border-radius: var(--radius, 0.5rem) var(--radius, 0.5rem) 0 0 !important;
+}
+
+.imagemProduto {
+  width: 60px; /* Tamanho ajustado */
+  height: 60px;
+  object-fit: cover;
+  border-radius: calc(var(--radius, 0.5rem) - 2px); /* Borda um pouco menor */
+  border: 1px solid var(--color-border, #e2e8f0);
+}
+
+.total {
+  text-align: right;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--color-border, #e2e8f0); /* Linha divisória */
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-foreground, #1e293b);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Aumenta o espaço entre os inputs */
+  margin-top: 10px;
+}
+
+/* Removido btnArea, o botão será estilizado diretamente */
+
+/* Estilo para o botão finalizar usando classes Bootstrap + variáveis globais */
+.btnFinalizar {
+  background-color: var(--color-secondary) !important; /* Laranja */
+  border-color: var(--color-secondary) !important;
+  color: var(--color-secondary-foreground) !important;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem; /* Botão maior */
+  margin-top: 1.5rem; /* Espaço acima do botão */
+  transition: all 0.3s ease-in-out;
+}
+
+.btnFinalizar:hover {
+  transform: translateY(-2px); /* Efeito sutil de levantar */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  background-color: #ea580c !important; /* Laranja mais escuro */
+  border-color: #ea580c !important;
+}
+
+/* Tabela - Ajustes finos */
+:global(.table) {
+  /* Seleciona a tabela globalmente dentro deste contexto */
+  margin-bottom: 0; /* Remove margem inferior padrão da tabela */
+  vertical-align: middle; /* Alinha conteúdo verticalmente */
+}
+
+:global(.table thead th) {
+  font-weight: 600;
+  color: var(--color-muted-foreground);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom-width: 1px; /* Linha abaixo do cabeçalho mais fina */
+}
+
+:global(.table tbody td) {
+  color: var(--color-foreground);
+  font-size: 0.95rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .cardHeader {
+    font-size: 1.1rem; /* Tamanho de fonte do cabeçalho do card */
+    padding: 0.8rem;
+  }
+
+  .imagemProduto {
+    width: 50px;
+    height: 50px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .total {
+    font-size: 1.1rem;
+  }
+
+  :global(.table thead) {
+    /* Esconde cabeçalho em telas pequenas (opcional) */
+    /* display: none; */
+  }
+  :global(.table tbody tr) {
+    /* Empilha colunas em telas pequenas (opcional) */
+    /* display: block; */
+    /* margin-bottom: 1rem; */
+    /* border-bottom: 1px solid var(--color-border); */
+  }
+  :global(.table tbody td) {
+    /* display: block; */
+    /* text-align: right; */
+    /* position: relative; */
+    /* padding-left: 50%; */
+  }
+  :global(.table tbody td::before) {
+    /* content: attr(data-label); */ /* Requer adicionar data-label="..." nas TDs */
+    /* position: absolute; */
+    /* left: 0; */
+    /* width: 45%; */
+    /* padding-left: 10px; */
+    /* font-weight: bold; */
+    /* text-align: left; */
+  }
+}

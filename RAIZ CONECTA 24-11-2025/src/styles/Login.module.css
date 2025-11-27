@@ -1,0 +1,108 @@
+.background {
+  /* Fundo da imagem original com gradiente escuro */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/imagemPage.jpg"); /* */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.loginback {
+  /* Container principal verde */
+  background-color: rgba(
+    var(--color-primary-rgb),
+    0.70
+  ); /* Verde primário mais opaco */
+  backdrop-filter: blur(5px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login {
+  flex: 1.2;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: orange;
+}
+
+/* Ajuste nas labels dentro da área de login */
+.login :global(.form-label) {
+  color: var(--color-primary-foreground);
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Ajuste nos inputs e select dentro da área de login */
+.login :global(.form-control),
+.login :global(.form-select) {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-primary-foreground);
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.6rem 0.8rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.login :global(.form-control::placeholder) {
+  color: rgba(255, 255, 255, 0.6);
+}
+.login :global(.form-control:focus),
+.login :global(.form-select:focus) {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--color-primary-foreground);
+  box-shadow: 0 0 0 0.2rem rgba(var(--color-secondary-rgb), 0.3); /* Sombra de foco laranja */
+}
+
+/* Estilo específico para o select (seta) */
+.login :global(.form-select) {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"); /* Seta branca */
+}
+.login :global(.form-select option) {
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+}
+
+/* Estilo para as abas (já configurado para laranja no globals.css) */
+
+/* Botões laranja (já configurado no globals.css via .btn-warning) */
+
+/* Imagem (lado direito do login) */
+.image {
+  flex: 0.8;
+  background-image: url("/Logo-removebg-preview.png"); /* */
+  background-size: 85%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 300px;
+  /* Borda sutil à esquerda */
+  border-left: 1px solid rgba(255, 255, 255, 0);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .loginback {
+    flex-direction: column;
+    max-width: 400px;
+  }
+  .login {
+    padding: 1.5rem 1.5rem;
+    flex: none;
+  }
+  .image {
+    /* Esconde a imagem em telas pequenas */
+    display: none;
+  }
+}

@@ -1,0 +1,206 @@
+/* Imports existentes */
+@import "tailwindcss"; /* Mantenha se estiver usando Tailwind */
+@import "bootstrap/dist/css/bootstrap.min.css"; /* */
+
+/* Variáveis CSS Globais */
+:root {
+  /* Cores */
+  --color-primary: #16a34a; /* Verde Principal */
+  --color-primary-rgb: 22, 163, 74;
+  --color-primary-foreground: #ffffff; /* Branco para texto sobre verde */
+  --color-secondary: #f97316; /* Laranja Secundário */
+  --color-secondary-rgb: 249, 115, 22;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #84cc16; /* Verde Lima Acento */
+  --color-accent-rgb: 132, 204, 22;
+  --color-accent-foreground: #1a2e05; /* Verde escuro para texto sobre acento */
+
+  /* Neutras */
+  --color-background: #f8fafc; /* Fundo levemente acinzentado */
+  --color-foreground: #1e293b; /* Texto principal (cinza escuro) */
+  --color-card: #ffffff; /* Fundo de cards */
+  --color-card-foreground: var(--color-foreground);
+  --color-muted: #f1f5f9; /* Fundo sutil */
+  --color-muted-foreground: #64748b; /* Texto secundário/muted (cinza) */
+  --color-border: #e2e8f0; /* Bordas (cinza claro) */
+  --color-input: var(--color-border);
+  --color-ring: var(--color-primary); /* Cor de foco (verde) */
+
+  /* Estados */
+  --color-destructive: #dc2626; /* Vermelho para erros */
+  --color-destructive-foreground: #ffffff;
+
+  /* Raio e Fontes (Atualizado com novas variáveis do layout.tsx) */
+  --radius: 0.5rem;
+  --font-sans: var(--font-lato);
+  --font-mono: var(--font-source-code-pro);
+}
+
+/* Estilos Base */
+body {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans), sans-serif;
+  text-wrap: balance;
+  color: var(--color-foreground);
+}
+
+p {
+  text-wrap: pretty;
+  color: var(--color-muted-foreground);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
+/* Estilos Globais Adicionais */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Estilização Tabs Login/Cadastro */
+/* Estilo geral para links das abas DENTRO do componente de login */
+.login .nav-pills .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius);
+  margin: 0 0.25rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: var(--bs-nav-pills-link-active-color);
+  background-color: #fd6d0d !important;
+}
+.nav-link {
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: #000000 !important;
+  background: none;
+  border: 0;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  display: block;
+}
+
+/* Estilo para a aba ATIVA DENTRO do componente de login (LARANJA) */
+.login .nav-pills .nav-link.active,
+.login .nav-pills .show > .nav-link {
+  color: var(--color-secondary-foreground);
+  background-color: var(--color-secondary);
+  font-weight: 600;
+}
+
+/* Hover para abas INATIVAS DENTRO do componente de login */
+.login .nav-pills .nav-link:hover:not(.active) {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+/* Espaçamento abaixo das abas DENTRO do componente de login */
+.login .tab-content {
+  margin-top: 1.5rem;
+}
+
+/* Ajustes Gerais Bootstrap */
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+.btn-primary:hover {
+  background-color: #15803d;
+  border-color: #15803d;
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+}
+.btn-secondary:hover {
+  background-color: #ea580c;
+  border-color: #ea580c;
+}
+
+.btn-success {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary-foreground) !important;
+}
+.btn-success:hover {
+  background-color: #15803d !important;
+  border-color: #15803d !important;
+}
+
+/* Garante que btn-warning use laranja */
+.btn-warning {
+  background-color: var(--color-secondary) !important;
+  border-color: var(--color-secondary) !important;
+  color: var(--color-secondary-foreground) !important;
+}
+.btn-warning:hover {
+  background-color: #ea580c !important;
+  border-color: #ea580c !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-ring);
+  box-shadow: 0 0 0 0.25rem rgba(var(--color-primary-rgb), 0.25);
+}
+.form-label {
+  color: var(--color-foreground);
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+/* ===== GLOBAL BACKGROUND ===== */
+body {
+  background: linear-gradient(180deg, #e9f7ec 0%, #ffffff 40%, #dff3e3 100%);
+  background-attachment: fixed;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== GLOBAL BACKGROUND ===== */
+body {
+  /* MUDANÇA AQUI: Gradiente que começa verde suave e termina branco */
+  background: linear-gradient(to bottom, #d5ffde 20%, #ffffff 50%, #ffffff 100%);
+  
+  /* Garante que o gradiente cubra tudo e não repita de forma estranha */
+  background-attachment: fixed; 
+  min-height: 100vh;
+
+  /* Mantenha suas configurações de fonte */
+  font-family: var(--font-sans), system-ui, sans-serif;
+  
+  /* Mantenha a cor do texto padrão */
+  color: var(--color-foreground);
+}
