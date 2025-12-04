@@ -104,6 +104,10 @@ CREATE TABLE pedidos (
 );
 
 CREATE TABLE ItemPedido_Tem (
+    ID              INT PRIMARY KEY,
+    QTD             INT,
+    Preco           DECIMAL(10,2),
+    UN              NCHAR(2),
     cdVendedor      INT FOREIGN KEY REFERENCES vendedor (CdVendedor),
     cdProduto       INT FOREIGN KEY REFERENCES produtos (CdProduto),
     cdPedidos       INT FOREIGN KEY REFERENCES pedidos (CdPedido)
@@ -144,36 +148,36 @@ CREATE TABLE ColetaEntrega (
 );
 
 -- ==========================================
--- INSERÇÕES DE DADOS
+-- INSERÃ‡Ã•ES DE DADOS
 -- ==========================================
 
 INSERT INTO cliente VALUES
-(1, 'Padaria Sol Nascente', 'Sol Nascente Ltda', '12345678000111', 'CNPJ', 'IS12345', 'Rua das Flores', '101', 'Centro', 'São Paulo', 'SP', '', '01001000', 'contato@solnascente.com', '(11)98877-1234', 'A'),
-(2, 'Mercado Bom Preço', 'Bom Preço Alimentos SA', '22345678000122', 'CNPJ', 'IS22345', 'Av Paulista', '2000', 'Bela Vista', 'São Paulo', 'SP', '', '01311000', 'vendas@bompreco.com', '(11)90011-1122', 'A'),
+(1, 'Padaria Sol Nascente', 'Sol Nascente Ltda', '12345678000111', 'CNPJ', 'IS12345', 'Rua das Flores', '101', 'Centro', 'SÃ£o Paulo', 'SP', '', '01001000', 'contato@solnascente.com', '(11)98877-1234', 'A'),
+(2, 'Mercado Bom PreÃ§o', 'Bom PreÃ§o Alimentos SA', '22345678000122', 'CNPJ', 'IS22345', 'Av Paulista', '2000', 'Bela Vista', 'SÃ£o Paulo', 'SP', '', '01311000', 'vendas@bompreco.com', '(11)90011-1122', 'A'),
 (3, 'Restaurante Sabor Caseiro', 'Sabor Caseiro Ltda', '33456789000133', 'CNPJ', 'IS33456', 'Rua das Laranjeiras', '55', 'Centro', 'Campinas', 'SP', '', '13010000', 'contato@saborcaseiro.com', '(19)99888-2222', 'A'),
 (4, 'Supermercado Estrela', 'Estrela Distribuidora', '44567890000144', 'CNPJ', 'IS44567', 'Rua dos Andradas', '888', 'Centro', 'Porto Alegre', 'RS', '', '90020000', 'estrela@super.com', '(51)97777-3333', 'A'),
 (5, 'Lanchonete Express', 'Express Alimentos Ltda', '55678900000155', 'CNPJ', 'IS55678', 'Av Central', '150', 'Centro', 'Curitiba', 'PR', '', '80010000', 'contato@express.com', '(41)98888-9999', 'A');
 
 INSERT INTO vendedor VALUES
-(1, 'Distribuidora Alpha', 'Alpha Comércio Ltda', '11111111000111', 'CNPJ', 'IE11111', 'Rua B', '15', 'Centro', 'São Paulo', 'SP', '', '01001001', 'vendas@alpha.com', '(11)91111-1111', 'A'),
+(1, 'Distribuidora Alpha', 'Alpha ComÃ©rcio Ltda', '11111111000111', 'CNPJ', 'IE11111', 'Rua B', '15', 'Centro', 'SÃ£o Paulo', 'SP', '', '01001001', 'vendas@alpha.com', '(11)91111-1111', 'A'),
 (2, 'Vendas Beta', 'Beta Alimentos Ltda', '22222222000122', 'CNPJ', 'IE22222', 'Av Brasil', '22', 'Zona Norte', 'Rio de Janeiro', 'RJ', '', '20040000', 'contato@beta.com', '(21)92222-2222', 'A'),
 (3, 'Comercial Gama', 'Gama Produtos SA', '33333333000133', 'CNPJ', 'IE33333', 'Rua C', '33', 'Centro', 'Campinas', 'SP', '', '13020000', 'gama@gama.com', '(19)93333-3333', 'A'),
-(4, 'Food Delta', 'Delta Distribuição', '44444444000144', 'CNPJ', 'IE44444', 'Rua D', '44', 'Industrial', 'Curitiba', 'PR', '', '80020000', 'delta@food.com', '(41)94444-4444', 'A'),
+(4, 'Food Delta', 'Delta DistribuiÃ§Ã£o', '44444444000144', 'CNPJ', 'IE44444', 'Rua D', '44', 'Industrial', 'Curitiba', 'PR', '', '80020000', 'delta@food.com', '(41)94444-4444', 'A'),
 (5, 'Mix Epsilon', 'Epsilon Mix Ltda', '55555555000155', 'CNPJ', 'IE55555', 'Av Oeste', '55', 'Centro', 'Porto Alegre', 'RS', '', '90030000', 'epsilon@mix.com', '(51)95555-5555', 'A');
 
 INSERT INTO entregador VALUES
-(1, '2023-01-01', '2023-01-05', 'Carlos Oliveira', '12345678900', 'CPF', 'Rua Azul', '10', 'Centro', 'São Paulo', 'SP', '', '01002000', 'A'),
-(2, '2023-01-02', '2023-01-06', 'Marcos Lima', '98765432100', 'CPF', 'Rua Verde', '11', 'Zona Sul', 'São Paulo', 'SP', '', '04830000', 'A'),
+(1, '2023-01-01', '2023-01-05', 'Carlos Oliveira', '12345678900', 'CPF', 'Rua Azul', '10', 'Centro', 'SÃ£o Paulo', 'SP', '', '01002000', 'A'),
+(2, '2023-01-02', '2023-01-06', 'Marcos Lima', '98765432100', 'CPF', 'Rua Verde', '11', 'Zona Sul', 'SÃ£o Paulo', 'SP', '', '04830000', 'A'),
 (3, '2023-01-03', '2023-01-07', 'Ana Souza', '11223344556', 'CPF', 'Av Norte', '22', 'Centro', 'Campinas', 'SP', '', '13030000', 'A'),
-(4, '2023-01-04', '2023-01-08', 'João Pedro', '66554433221', 'CPF', 'Rua das Oliveiras', '77', 'Centro', 'Curitiba', 'PR', '', '80040000', 'A'),
+(4, '2023-01-04', '2023-01-08', 'JoÃ£o Pedro', '66554433221', 'CPF', 'Rua das Oliveiras', '77', 'Centro', 'Curitiba', 'PR', '', '80040000', 'A'),
 (5, '2023-01-05', '2023-01-09', 'Paula Reis', '99887766554', 'CPF', 'Av Central', '99', 'Centro', 'Porto Alegre', 'RS', '', '90040000', 'A');
 
 INSERT INTO produtos VALUES
 (1, '2024-01-01', 'Arroz Branco 5kg', 'Alimento', 25.90, 100, '2024-01-15', 'A'),
-(2, '2024-01-02', 'Feijão Carioca 1kg', 'Alimento', 7.50, 200, '2024-01-10', 'A'),
-(3, '2024-01-03', 'Macarrão Espaguete 500g', 'Alimento', 5.20, 150, '2024-01-11', 'A'),
-(4, '2024-01-04', 'Óleo de Soja 900ml', 'Alimento', 6.90, 180, '2024-01-12', 'A'),
-(5, '2024-01-05', 'Açúcar Refinado 1kg', 'Alimento', 4.80, 250, '2024-01-14', 'A');
+(2, '2024-01-02', 'FeijÃ£o Carioca 1kg', 'Alimento', 7.50, 200, '2024-01-10', 'A'),
+(3, '2024-01-03', 'MacarrÃ£o Espaguete 500g', 'Alimento', 5.20, 150, '2024-01-11', 'A'),
+(4, '2024-01-04', 'Ã“leo de Soja 900ml', 'Alimento', 6.90, 180, '2024-01-12', 'A'),
+(5, '2024-01-05', 'AÃ§Ãºcar Refinado 1kg', 'Alimento', 4.80, 250, '2024-01-14', 'A');
 
 INSERT INTO pedidos VALUES
 (1, '2024-02-01', '2024-02-03', '2024-02-04', 3, 15.0, 89.50, 'E', 10.00, 1),
@@ -203,12 +207,13 @@ INSERT INTO Prod_Vendedor_Possui VALUES
 (4, '2024-01-04', 180, '2024-01-13', 6.50, '2024-01-15', 4, 4),
 (5, '2024-01-05', 250, '2024-01-14', 4.50, '2024-01-15', 5, 5);
 
-INSERT INTO ItemPedido_Tem VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3),
-(4, 4, 4),
-(5, 5, 5);
+-- CORRIGIDO: agora insere todos os campos corretamente
+INSERT INTO ItemPedido_Tem (ID, QTD, Preco, UN, cdVendedor, cdProduto, cdPedidos) VALUES
+(1, 2, 25.90, 'UN', 1, 1, 1),
+(2, 1, 7.50,  'UN', 2, 2, 2),
+(3, 3, 5.20,  'UN', 3, 3, 3),
+(4, 4, 6.90,  'UN', 4, 4, 4),
+(5, 5, 4.80,  'UN', 5, 5, 5);
 
 INSERT INTO acesso VALUES
 (1, 1, 'cliente1', 'hash123', 'cliente', 'A', '2024-02-01', 1, NULL, NULL),
@@ -221,51 +226,41 @@ INSERT INTO acesso VALUES
 -- SELECTS
 -- ==========================================
 
--- 1. Selecionar todos os clientes
 SELECT * FROM cliente;
 
--- 2. Listar produtos ordenados por preço
 SELECT Nome, Preco FROM produtos ORDER BY Preco DESC;
 
--- 3. Contar quantos pedidos existem
 SELECT COUNT(*) AS TotalPedidos FROM pedidos;
 
--- 4. Pedidos com informações do cliente
 SELECT p.CdPedido, c.NomeFantasia, p.ValorTotal, p.VlFrete
 FROM pedidos p
 JOIN cliente c ON p.cdCliente = c.CdCliente;
 
--- 5. Produtos e seus respectivos vendedores e preços
 SELECT v.NomeFantasia AS Vendedor, pr.Nome AS Produto, pv.Preco
 FROM Prod_Vendedor_Possui pv
 JOIN vendedor v ON pv.cdVendedor = v.CdVendedor
 JOIN produtos pr ON pv.cdProduto = pr.CdProduto;
 
--- 6. Total de pedidos por cliente
 SELECT c.NomeFantasia, COUNT(p.CdPedido) AS TotalPedidos, SUM(p.ValorTotal) AS ValorGasto
 FROM pedidos p
 JOIN cliente c ON p.cdCliente = c.CdCliente
 GROUP BY c.NomeFantasia
 ORDER BY ValorGasto DESC;
 
--- 7. Rotas e entregadores que percorreram mais de 30 km
 SELECT r.CdRota, e.Nome, r.PercursoKM, r.Valor
 FROM Rota r
 JOIN entregador e ON r.cdEntregador = e.CdEntregador
 WHERE r.PercursoKM > 30;
 
--- 8. Produtos mais caros que a média de preço geral
 SELECT Nome, Preco
 FROM produtos
 WHERE Preco > (SELECT AVG(Preco) FROM produtos);
 
--- 9. Pedidos com valor total acima de 100 e cliente de São Paulo
 SELECT p.CdPedido, c.NomeFantasia, c.Cidade, p.ValorTotal
 FROM pedidos p
 JOIN cliente c ON p.cdCliente = c.CdCliente
-WHERE p.ValorTotal > 100 AND c.Cidade = 'São Paulo';
+WHERE p.ValorTotal > 100 AND c.Cidade = 'SÃ£o Paulo';
 
--- 10. Entregas previstas para uma data específica com nome do entregador
 SELECT ce.CdColEntrega, ce.Tipo, ce.DtPrevista, e.Nome AS Entregador
 FROM ColetaEntrega ce
 JOIN Rota r ON ce.cdRota = r.CdRota
